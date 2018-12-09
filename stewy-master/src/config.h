@@ -294,11 +294,11 @@ const double B_COORDS[6][2] = {
 */
 #ifdef ENABLE_TOUCHSCREEN
 
-#define XP A7  // YELLOW / XRT. can be a digital pin.
-#define XM A6  // WHITE / XLE. must be an analog pin, use "An" notation!
+#define XP A0  // YELLOW / XRT. can be a digital pin.
+#define XM A1  // WHITE / XLE. must be an analog pin, use "An" notation!
 
-#define YP A8  // RED / YLO. must be an analog pin, use "An" notation!
-#define YM A9  // BLACK / YUP. can be a digital pin.
+#define YP A2  // RED / YLO. must be an analog pin, use "An" notation!
+#define YM A3  // BLACK / YUP. can be a digital pin.
 
 // For better pressure precision, we need to know the resistance
 // between X+ and X- Use any multimeter to read it

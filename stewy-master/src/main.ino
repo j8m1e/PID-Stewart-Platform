@@ -138,10 +138,12 @@ void setupTouchscreen() {
   rollPID.SetOutputLimits(ROLL_PID_LIMIT_MIN, ROLL_PID_LIMIT_MAX);
   pitchPID.SetOutputLimits(PITCH_PID_LIMIT_MIN, PITCH_PID_LIMIT_MAX);
   rollPID.SetMode(AUTOMATIC);
-  pitchPID.SetMode(AUTOMATIC);
+  pitchPID.Mode
+  (AUTOMATIC);
   #else
   Logger::debug("Touchscreen DISABLED.");
   #endif
+
 }
 
 void setupPlatform() {
