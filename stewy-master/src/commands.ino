@@ -22,7 +22,7 @@
 
 #define CPU_RESTART_VAL 0x5FA0004                           // write this magic number...
 #define CPU_RESTART_ADDR (uint32_t *)0xE000ED0C             // to this memory location...
-#define CPU_RESTART (*CPU_RESTART_ADDR = CPU_RESTART_VAL) 
+#define CPU_RESTART (*CPU_RESTART_ADDR = CPU_RESTART_VAL)   // presto!
 
 void processCommands()
 {

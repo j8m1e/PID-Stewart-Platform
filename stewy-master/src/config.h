@@ -19,12 +19,11 @@
 #include <Arduino.h>
 #include <Blinker.h>
 
-
 #ifndef __STU_CONFIG_H__
 #define __STU_CONFIG_H__
 
 #define ENABLE_SERIAL_COMMANDS    //Comment out, to omit Command shell code.
-//#define ENABLE_NUNCHUCK           //Comment out, to omit Nunchuck code.
+#define ENABLE_NUNCHUCK           //Comment out, to omit Nunchuck code.
 #define ENABLE_TOUCHSCREEN        //Comment out, to omit Touchscreen code.
 
 /*

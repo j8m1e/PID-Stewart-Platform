@@ -24,7 +24,8 @@ PID::PID(double Input, double Output, double Setpoint,
     i = Input;
     sp = Setpoint;
 
-    //Serial.print("In/Out/Set =" + String(Input) + "/" + String(Output) + "/" + String(Setpoint));
+    //Serial.printf("In/Out/Set = %.2f/%.2f/%.2f", Input, Output, Setpoint);
+    Serial.print("In/Out/Set =" + String(Input) + "/" + String(Output) + "/" + String(Setpoint));
 
     inAuto = false;
 
