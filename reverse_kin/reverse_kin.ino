@@ -42,7 +42,7 @@ void setup()
     servo[i].attach(servo_pin[i]);
     servo[i].writeMicroseconds(servo_zero[i]);
     }
-  delay(1000);
+  delay(100);
 }
 void loop()
   {
@@ -52,7 +52,7 @@ void loop()
   z = Serial.read();
   Serial.print(z);
   */
-  static float pe[6] = {0,0,10,radians(0),radians(0),radians(0)}, theta_a[6], servo_pos[6],q[3][6], r[3][6], dl[3][6], dl2[6];
+  static float pe[6] = {0,0,5,radians(0),radians(0),radians(0)}, theta_a[6], servo_pos[6],q[3][6], r[3][6], dl[3][6], dl2[6];
   /*
   pe = location and orientation of end effector frame relative to the base frame [sway, surge,heave, pitch, roll, yaw)
   theta_a = angle of the servo arm
@@ -81,11 +81,11 @@ void loop()
     theta_a[i] = constrain(theta_a[i], servo_min, servo_max);
     if(i%2 == 1) servo_pos[i] = servo_zero[i] + theta_a[i]*servo_mult;
       else servo_pos[i] = servo_zero[i] - theta_a[i]*servo_mult;
-/*    }
+  }
     //write the angels to the servo
   for(int i = 0; i < 6; i++)
     {
-    */
+ 
     Serial.print(servo_pos[i]);
     Serial.print("    ");
     if(i==5) Serial.println();
