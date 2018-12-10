@@ -36,6 +36,7 @@ Servos 1, 3, 5: normal (+ = up, - = down)
 */
 void setup()
 {
+
 //Serial.begin(9600);
 for(int i = 0; i < 6; i++)
 {
@@ -52,7 +53,7 @@ void loop()
  z = Serial.read();
  Serial.print(z);
  */
-static float pe[6] = {0,0,1,radians(0),radians(0),radians(0)}, theta_a[6], servo_pos[6],q[3][6], r[3][6], dl[3][6], dl2[6];
+static float pe[6] = {0,10,0,radians(0),radians(0),radians(0)}, theta_a[6], servo_pos[6],q[3][6], r[3][6], dl[3][6], dl2[6];
 /*
 pe = location and orientation of end effector frame relative to the base frame [sway, surge,heave, pitch, roll, yaw)
 theta_a = angle of the servo arm
