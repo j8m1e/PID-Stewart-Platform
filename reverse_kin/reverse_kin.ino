@@ -64,31 +64,39 @@ void loop()
   */
   for(int i = 0; i < 6; i++)
     {
-    q[0][i] = L1*cos(-theta_a[i])*cos(theta_s[i]) + p[0][i];
-    q[1][i] = L1*cos(-theta_a[i])*sin(theta_s[i]) + p[1][i];
-    q[2][i] = -L1*sin(-theta_a[i]);
-    r[0][i] = re[0][i]*cos(pe[4])*cos(pe[5]) + re[1][i]*(sin(pe[3])*sin(pe[4])*cos(pe[5]) -
-    cos(pe[3])*sin(pe[5])) + pe[0];
-    r[1][i] = re[0][i]*cos(pe[4])*sin(pe[5]) + re[1][i]*(cos(pe[3])*cos(pe[5]) +
-    sin(pe[3])*sin(pe[4])*sin(pe[5])) + pe[1];
-    r[2][i] = -re[0][i]*sin(pe[4]) + re[1][i]*sin(pe[3])*cos(pe[4]) + z_home + pe[2];
-    dl[0][i] = q[0][i] - r[0][i];
-    dl[1][i] = q[1][i] - r[1][i];
-    dl[2][i] = q[2][i] - r[2][i];
-    dl2[i] = sqrt(dl[0][i]*dl[0][i] + dl[1][i]*dl[1][i] + dl[2][i]*dl[2][i]) - L2;
-    theta_a[i] += dl2[i];
-    //define direction of rotation
-    theta_a[i] = constrain(theta_a[i], servo_min, servo_max);
-    if(i%2 == 1) servo_pos[i] = servo_zero[i] + theta_a[i]*servo_mult;
-      else servo_pos[i] = servo_zero[i] - theta_a[i]*servo_mult;
-  }
+      q[0][i] = L1*cos(-theta_a[i])*cos(theta_s[i]) + p[0][i];
+      q[1][i] = L1*cos(-theta_a[i])*sin(theta_s[i]) + p[1][i];
+      q[2][i] = -L1*sin(-theta_a[i]);
+      r[0][i] = re[0][i]*cos(pe[4])*cos(pe[5]) + re[1][i]*(sin(pe[3])*sin(pe[4])*cos(pe[5]) -
+      cos(pe[3])*sin(pe[5])) + pe[0];
+      r[1][i] = re[0][i]*cos(pe[4])*sin(pe[5]) + re[1][i]*(cos(pe[3])*cos(pe[5]) +
+      sin(pe[3])*sin(pe[4])*sin(pe[5])) + pe[1];
+      r[2][i] = -re[0][i]*sin(pe[4]) + re[1][i]*sin(pe[3])*cos(pe[4]) + z_home + pe[2];
+      dl[0][i] = q[0][i] - r[0][i];
+      dl[1][i] = q[1][i] - r[1][i];
+      dl[2][i] = q[2][i] - r[2][i];
+      dl2[i] = sqrt(dl[0][i]*dl[0][i] + dl[1][i]*dl[1][i] + dl[2][i]*dl[2][i]) - L2;
+      theta_a[i] += dl2[i];
+      //define direction of rotation
+      theta_a[i] = constrain(theta_a[i], servo_min, servo_max);
+      if(i%2 == 1) 
+      {
+        servo_pos[i] = servo_zero[i] + theta_a[i]*servo_mult;
+      }
+      else 
+      {
+        servo_pos[i] = servo_zero[i] - theta_a[i]*servo_mult;
+      }
+    }
     //write the angels to the servo
   for(int i = 0; i < 6; i++)
     {
- 
     Serial.print(servo_pos[i]);
     Serial.print("    ");
-    if(i==5) Serial.println();
+    if(i==5) 
+    {
+      Serial.println();
+    }
     servo[i].writeMicroseconds(servo_pos[i]);
     }
   }
